@@ -1,4 +1,4 @@
-C:\Users\jjb\devops\eclipse-workspace\cicd-pipeline\src\test\java\com\TestMessageService.java
-C:\Users\jjb\devops\eclipse-workspace\cicd-pipeline\src\test\java\com\TestCalculatorService.java
-C:\Users\jjb\devops\eclipse-workspace\cicd-pipeline\src\test\java\com\TestMetricService.java
-C:\Users\jjb\devops\eclipse-workspace\cicd-pipeline\src\test\java\com\TestTemperatureService.java
+/root/CICD-Devops/src/test/java/com/TestCalculatorService.java
+/root/CICD-Devops/src/test/java/com/TestTemperatureService.java
+/root/CICD-Devops/src/test/java/com/TestMessageService.java
+/root/CICD-Devops/src/test/java/com/TestMetricService.java
