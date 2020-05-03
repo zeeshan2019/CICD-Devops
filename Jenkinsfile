@@ -15,18 +15,18 @@ node{
 		sh 'mvn install'
 	}
 	stage('Docker Image Build') {
-		sh 'docker build -t zeeshan2019/webapp_img:1 .'
+		sh 'docker build -t zeeshan2019/webapp_img:1.0 .'
 	}
 	stage('Docker Image Push') {
-		withCredentials([string(credentialsId: 'dockpass', variable: 'dock-pass')]) {
-        sh "docker login -u zeeshan2019 -p ${dock-pass}"
-		}
-        sh 'docker push zeeshan2019/webapp_img:1'
+		withCredentials([string(credentialsId: 'dockerPwd', variable: 'dockerHub')]) {
+            sh "docker login -u zeeshan2019 -p ${dockerHub}"
+        }
+        sh 'docker push zeeshan2019/webapp_img:1.0'
     }
 	stage('Docker Pull Image') {
-		sh 'docker pull zeeshan2019/webapp_img:1'
+		sh 'docker pull zeeshan2019/webapp_img:1.0'
 	}
 	stage('Run Docker Container') {
-		sh 'docker run --name cicdWebAppCont -p 8080:8080 -d zeeshan2019/webapp_img:1'
+		sh 'docker run --name cicdWebAppCont -p 8080:8080 -d zeeshan2019/webapp_img:1.0'
 	}
 }
