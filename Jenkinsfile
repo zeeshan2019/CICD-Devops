@@ -35,6 +35,6 @@ node{
         	}
 	}catch(err) {
 			//Email notification for bad builds
-			emailext attachLog: true, body: 'This is to inform that  $BUILD_NUMBER has failed. "${err}". Kindly refer to logs attached.', replyTo: 'noreply@jenkinsbootcamp.com', subject: 'Build no: $BUILD_NUMBER has failed', to: 'zee2020.sj@gmail.com'
+			emailext attachLog: true, body: 'This is to inform that  $BUILD_NUMBER has failed. Kindly refer to logs attached.', replyTo: 'noreply@jenkinsbootcamp.com', subject: 'Build no: $BUILD_NUMBER has failed', to: 'zee2020.sj@gmail.com'
 		    }
 }
