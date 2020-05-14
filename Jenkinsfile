@@ -34,7 +34,7 @@ node{
         	       sh 'scp -o StrictHostKeyChecking=no target/*.war /usr/local/tomcat/webapps'
         	}
 	}catch(err) {
-			throw err
+			//throw err
 			//Email notification for bad builds
 		    }
 }
