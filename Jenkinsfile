@@ -26,9 +26,6 @@ node{
             }
         sh 'docker push zeeshan2019/webapp_img:1.0'
         }
-	stage('Docker Pull Image') {
-		sh 'docker pull zeeshan2019/webapp_img:1.0'
-	}
 	stage('Email notification for bad builds') {
 		//WIP
 	}
