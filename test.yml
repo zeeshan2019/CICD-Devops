@@ -20,5 +20,3 @@
         dest: /usr/local/tomcat/conf/server.xml
     - name: starting tomcat
       shell: nohup /usr/local/tomcat/bin/startup.sh &
-      async: 45
-      poll: 0
