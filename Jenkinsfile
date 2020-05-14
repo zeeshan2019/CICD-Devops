@@ -7,7 +7,7 @@ node{
 			sh 'mvn clean'
 		}
 		stage('Build Stage') {
-			sh 'mvn compiled'
+			sh 'mvn compile'
 		}
 		stage('Test Stage') {
 			sh 'mvn test'
