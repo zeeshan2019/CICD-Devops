@@ -9,7 +9,7 @@ node{
 		stage('Build Stage') {
 			sh 'mvn compile'
 		}
-		stage('Test Stage') {
+		stage('Test MVN Stage') {
 			sh 'mvn test'
 		}
 		stage('Stage Install') {
