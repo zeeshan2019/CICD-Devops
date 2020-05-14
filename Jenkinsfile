@@ -15,7 +15,7 @@ node{
 		stage('Stage Install') {
 			sh 'mvn install'
 		}
-	        stage('Sonar Qube scanner') {
+	        stage('SonarQube scanner') {
         	        sh 'mvn sonar:sonar'
 	        }
 		stage('Docker Image Build') {
