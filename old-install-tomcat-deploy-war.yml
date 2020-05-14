@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: downloading tomcat
+      get_url:
+        url:  http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.54/bin/apache-tomcat-8.5.54.tar.gz
+        dest: /usr/local
+    - name : extracting dwnloaded tomcat
+      unarchive:
+        src: /usr/local/apache-tomcat-8.5.54.tar.gz
+        dest: /usr/local
+    - name: rename home folder
+      command: mv /usr/local/apache-tomcat-8.5.54 /usr/local/tomcat
+    - name: revome ROOT folder
+      file:
+        path: /usr/local/tomcat/webapps/ROOT
+        state: absent
+    - name: copy war file
+      command: cp target/devopsWebapp.war /usr/local/tomcat/webapps/ROOT.war
+    - name: Starting tomcat
+      shell: nohup /usr/local/tomcat/bin/startup.sh &
