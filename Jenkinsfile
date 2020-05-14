@@ -1,7 +1,7 @@
 node{
 	try {
 		stage('Git Repository Checkout') {
-			git 'https://github.com/zeeshan2019/CICD-Devops.git'
+			git 'ttps://github.com/zeeshan2019/CICD-Devops.git'
 		}
 		stage('Clean Stage') {
 			sh 'mvn clean'
