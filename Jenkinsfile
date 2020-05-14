@@ -28,13 +28,13 @@ node{
        	 	sh 'docker push zeeshan2019/webapp_img:1.0'
         	}
         	stage('Auto configuration of Tomcat') {
-               		sh 'ansible-playbook install-configure-tomcat.yml'
+               		ansiblePlaybook 'install-configure-tomcat.yml'
         	}
 	        stage('Deployment on Tomcat') {
         	       sh 'scp -o StrictHostKeyChecking=no target/*.war /usr/local/tomcat/webapps'
         	}
 	}catch(err) {
-			//throw err
 			//Email notification for bad builds
+			emailext attachLog: true, body: 'This is to inform that  $BUILD_NUMBER has failed. "${err}". Kindly refer to logs attached.', replyTo: 'noreply@jenkinsbootcamp.com', subject: 'Build no: $BUILD_NUMBER has failed', to: 'zee2020.sj@gmail.com'
 		    }
 }
