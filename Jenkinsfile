@@ -14,19 +14,28 @@ node{
 	stage('Stage Install') {
 		sh 'mvn install'
 	}
+        stage('Sonar Qube check') {
+                sh 'mvn sonar:sonar'
+        }
 	stage('Docker Image Build') {
 		sh 'docker build -t zeeshan2019/webapp_img:1.0 .'
 	}
 	stage('Docker Image Push') {
 		withCredentials([string(credentialsId: 'dockerPwd', variable: 'dockerHub')]) {
             sh "docker login -u zeeshan2019 -p ${dockerHub}"
-        }
+            }
         sh 'docker push zeeshan2019/webapp_img:1.0'
-    }
+        }
 	stage('Docker Pull Image') {
 		sh 'docker pull zeeshan2019/webapp_img:1.0'
 	}
-	stage('Run Docker Container') {
-		sh 'docker run --name cicdWebAppCont -p 8080:8080 -d zeeshan2019/webapp_img:1.0'
+	stage('Email notification for bad builds') {
+		//WIP
 	}
+        stage('Auto configuration of Tomcat') {
+               sh 'ansible-playbook install-configure-tomcat.yml'
+        }
+        stage('Deployment on Tomcat') {
+               sh 'scp -o StrictHostKeyChecking=no target/*.war /usr/local/tomcat/webapps'
+        }
 }
